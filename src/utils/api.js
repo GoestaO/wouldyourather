@@ -7,5 +7,6 @@ export function getInitialData() {
 }
 
 export function saveQuestionAnswer(authedUser, qid, answer) {
+  console.log("saving answer in db...")
   _saveQuestionAnswer({authedUser, qid, answer});
 }

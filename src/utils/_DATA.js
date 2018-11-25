@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatarfiles.alphacoders.com%2F108%2F108614.jpg&imgrefurl=https%3A%2F%2Favatars.alphacoders.com%2Favatars%2Fview%2F108614&docid=AL59tH70rHeuiM&tbnid=0xaXOb0Hq61ThM%3A&vet=10ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwhIKAwwDA..i&w=256&h=256&itg=1&bih=947&biw=1920&q=game%20of%20thrones%20avatars&ved=0ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwhIKAwwDA&iact=mrc&uact=8',
+    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatarfiles.alphacoders.com%2F470%2F47015.jpg&imgrefurl=https%3A%2F%2Favatars.alphacoders.com%2Favatars%2Fview%2F47015&docid=p0i7TuTCFEDthM&tbnid=s8rkW8KnfNTo4M%3A&vet=10ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg-KAIwAg..i&w=256&h=256&bih=947&biw=1920&q=game%20of%20thrones%20avatars&ved=0ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg-KAIwAg&iact=mrc&uact=8',
+    avatarURL: "https://tylermcginnis.com/would-you-rather/tyler.jpg",
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo'
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatarfiles.alphacoders.com%2F562%2F56249.jpg&imgrefurl=https%3A%2F%2Favatars.alphacoders.com%2Favatars%2Fview%2F56249&docid=vUsAdt5MMGJSEM&tbnid=QCRbLLmc5PdHYM%3A&vet=10ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg_KAMwAw..i&w=256&h=256&bih=947&biw=1920&q=game%20of%20thrones%20avatars&ved=0ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg_KAMwAw&iact=mrc&uact=8',
+    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -186,6 +186,7 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({authedUser, qid, answer}) {
+  console.log({authedUser, qid, answer});
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

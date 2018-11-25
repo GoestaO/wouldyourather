@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {answerQuestionAsync} from '../actions/questions';
+import {Redirect} from 'react-router-dom';
+import {loadInitalDataAsync} from '../actions/shared';
 
 class Question extends React.Component {
 
@@ -8,17 +10,21 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: ''
+      answer: '',
+      redirectToStatistics: false
     }
   }
+
+  //TODO: Wenn Frage schon beantwortet, radiobutton mit der Antwort vorselektieren
 
   answerQuestion = (event) => {
     event.preventDefault();
     const answer = this.state.answer;
-    const {qid, authedUser} = this.props;
+    const {question_id, authedUser} = this.props;
     this
       .props
-      .dispatch(answerQuestionAsync(authedUser, qid, answer));
+      .dispatch(answerQuestionAsync(authedUser, question_id, answer));
+    this.setState(() => ({redirectToStatistics: true}))
   }
 
   _handleRadio = (event) => {
@@ -27,24 +33,34 @@ class Question extends React.Component {
   }
 
   render() {
-    const {question, author} = this.props;
-    return (<div>
-      <div className="question-info">{author && author.name}
-        asks:</div>
-      <h2>Would you rather</h2>
-      <form onSubmit={(e) => this.answerQuestion(e)}>
-        <div className="question-options">
-          <label>
-            <input type="radio" name="answer" value="optionOne" onChange={this._handleRadio}/>{question && question.optionOne.text}
-          </label>
-          <label>
-            <input type="radio" name="answer" value="optionTwo" onChange={this._handleRadio}/>{question && question.optionTwo.text}
-          </label>
+    const {question_id, question, author} = this.props;
+    const {redirectToStatistics} = this.state;
+    if (redirectToStatistics === true) {
+      return (<Redirect to={`/statistics/${question_id}`}/>)
+    }
+    return (
 
+      (question && author)
+      ? (<div className="question">
+        <h2>Would you rather</h2>
+        <div>
+          <img src={author.avatarURL} alt={`Avatar of ${author.name}`} className='avatar'/>
+          <span>{author.name}</span>
         </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>);
+        <form onSubmit={(e) => this.answerQuestion(e)}>
+          <div className="question-options">
+            <label>
+              <input type="radio" name="answer" value="optionOne" onChange={this._handleRadio}/>{question && question.optionOne.text}
+            </label>
+            <label>
+              <input type="radio" name="answer" value="optionTwo" onChange={this._handleRadio}/>{question && question.optionTwo.text}
+            </label>
+
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>)
+      : null);
   }
 }
 
@@ -53,13 +69,12 @@ function mapStateToProps({
   users,
   authedUser
 }, props) {
-  const {id} = props.match.params;
-  console.log(questions);
-  const question = questions[id];
+  const {question_id} = props.match.params;
+  const question = questions[question_id];
+  console.log()
   const author = question
     ? users[question.author]
     : null;
-  return {id, question, author, authedUser}
+  return {question_id, question, author, authedUser}
 }
-
 export default connect(mapStateToProps)(Question);

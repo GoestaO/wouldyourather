@@ -13,7 +13,7 @@ function answerQuestion(authedUser, qid, answer) {
   return {type: ANSWER_QUESTION, authedUser, qid, answer}
 }
 
-// Optimistic update
+// TODO: Optimistic update
 export function answerQuestionAsync(authedUser, qid, answer) {
   return(dispatch) => {
     dispatch(answerQuestion(authedUser, qid, answer));

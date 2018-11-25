@@ -1,4 +1,4 @@
-import {RECEIVE_QUESTIONS, ANSWER_QUESTION} from '../actions/questions'
+import {RECEIVE_QUESTIONS, ANSWER_QUESTION, SHOW_UNANSWERED_QUESTIONS} from '../actions/questions'
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -11,10 +11,7 @@ export default function questions(state = {}, action) {
       let authedUser = action.authedUser;
       let qid = action.qid
       let foundQuestion = state[qid]
-      let answer = action
-        .answer
-        console
-        .log(state[qid][answer].votes);
+      let answer = action.answer
       return {
         ...state,
         [qid]: {
@@ -26,7 +23,7 @@ export default function questions(state = {}, action) {
               .concat(authedUser)
           }
         }
-      }
+      }	
     default:
       return state
   }

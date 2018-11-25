@@ -11,19 +11,27 @@ import Nav from './Nav';
 class Homepage extends React.Component {
 
   componentDidMount() {
-    this
-      .props
-      .dispatch(loadInitalDataAsync());
+    if (this.props.loading === true) {
+        this
+          .props
+          .dispatch(loadInitalDataAsync())
+    }
   }
   render() {
+    // const showUnansweredQuestions = this.state.showUnansweredQuestions;
     return (<div>
-      <QuestionList/>
+
+      {
+        this.props.loading
+          ? null
+          : (<QuestionList/>)
+      }
     </div>)
   }
 }
 function mapStateToProps(state) {
   return {
-    loading: state.authedUser === null
+    loading: (state.authedUser === null) && (Object.keys(state.questions).length === 0) && (Object.keys(state.users).length === 0)
   }
 }
 export default connect(mapStateToProps)(Homepage);

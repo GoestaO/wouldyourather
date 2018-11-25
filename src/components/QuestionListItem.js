@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 class QuestionListItem extends React.Component {
 
   render() {
-    const {id, question} = this.props
-    return (<Link to={`/question/${id}`}>Question
+    const {question_id, question} = this.props
+    return (<Link to={`/questions/${question_id}`}>Question
       <div className="question">
         <div>Would you rather</div>
         <div>
@@ -20,9 +20,9 @@ class QuestionListItem extends React.Component {
 }
 function mapStateToProps({
   questions
-}, {id}) {
+}, {question_id}) {
 
-  const question = questions[id];
+  const question = questions[question_id];
   return {question}
 }
 
