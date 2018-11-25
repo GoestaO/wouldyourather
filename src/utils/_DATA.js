@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: ,
+    avatarURL: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatarfiles.alphacoders.com%2F108%2F108614.jpg&imgrefurl=https%3A%2F%2Favatars.alphacoders.com%2Favatars%2Fview%2F108614&docid=AL59tH70rHeuiM&tbnid=0xaXOb0Hq61ThM%3A&vet=10ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwhIKAwwDA..i&w=256&h=256&itg=1&bih=947&biw=1920&q=game%20of%20thrones%20avatars&ved=0ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwhIKAwwDA&iact=mrc&uact=8',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,23 +14,23 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: ,
+    avatarURL: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatarfiles.alphacoders.com%2F470%2F47015.jpg&imgrefurl=https%3A%2F%2Favatars.alphacoders.com%2Favatars%2Fview%2F47015&docid=p0i7TuTCFEDthM&tbnid=s8rkW8KnfNTo4M%3A&vet=10ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg-KAIwAg..i&w=256&h=256&bih=947&biw=1920&q=game%20of%20thrones%20avatars&ved=0ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg-KAIwAg&iact=mrc&uact=8',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
-      "xj352vofupe1dqz9emx13r": 'optionTwo',
+      "xj352vofupe1dqz9emx13r": 'optionTwo'
     },
-    questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
+    questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do']
   },
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: ,
+    avatarURL: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Favatarfiles.alphacoders.com%2F562%2F56249.jpg&imgrefurl=https%3A%2F%2Favatars.alphacoders.com%2Favatars%2Fview%2F56249&docid=vUsAdt5MMGJSEM&tbnid=QCRbLLmc5PdHYM%3A&vet=10ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg_KAMwAw..i&w=256&h=256&bih=947&biw=1920&q=game%20of%20thrones%20avatars&ved=0ahUKEwj3mtPrvu3eAhXIiiwKHcE1A9sQMwg_KAMwAw&iact=mrc&uact=8',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
-    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r']
   }
 }
 
@@ -41,7 +41,7 @@ let questions = {
     timestamp: 1467166872634,
     optionOne: {
       votes: ['sarahedo'],
-      text: 'have horrible short term memory',
+      text: 'have horrible short term memory'
     },
     optionTwo: {
       votes: [],
@@ -54,10 +54,12 @@ let questions = {
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
-      text: 'become a superhero',
+      text: 'become a superhero'
     },
     optionTwo: {
-      votes: ['johndoe', 'sarahedo'],
+      votes: [
+        'johndoe', 'sarahedo'
+      ],
       text: 'become a supervillain'
     }
   },
@@ -67,7 +69,7 @@ let questions = {
     timestamp: 1488579767190,
     optionOne: {
       votes: [],
-      text: 'be telekinetic',
+      text: 'be telekinetic'
     },
     optionTwo: {
       votes: ['sarahedo'],
@@ -80,7 +82,7 @@ let questions = {
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
-      text: 'be a front-end developer',
+      text: 'be a front-end developer'
     },
     optionTwo: {
       votes: ['sarahedo'],
@@ -93,7 +95,7 @@ let questions = {
     timestamp: 1489579767190,
     optionOne: {
       votes: ['tylermcginnis'],
-      text: 'find $50 yourself',
+      text: 'find $50 yourself'
     },
     optionTwo: {
       votes: ['johndoe'],
@@ -106,48 +108,58 @@ let questions = {
     timestamp: 1493579767190,
     optionOne: {
       votes: ['johndoe'],
-      text: 'write JavaScript',
+      text: 'write JavaScript'
     },
     optionTwo: {
       votes: ['tylermcginnis'],
       text: 'write Swift'
     }
-  },
+  }
 }
 
-function generateUID () {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+function generateUID() {
+  return Math
+    .random()
+    .toString(36)
+    .substring(2, 15) + Math
+    .random()
+    .toString(36)
+    .substring(2, 15)
 }
 
-export function _getUsers () {
+export function _getUsers() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({...users}), 1000)
+    setTimeout(() => res({
+      ...users
+    }), 1000)
   })
 }
 
-export function _getQuestions () {
+export function _getQuestions() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({...questions}), 1000)
+    setTimeout(() => res({
+      ...questions
+    }), 1000)
   })
 }
 
-function formatQuestion ({ optionOneText, optionTwoText, author }) {
+function formatQuestion({optionOneText, optionTwoText, author}) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
     author,
     optionOne: {
       votes: [],
-      text: optionOneText,
+      text: optionOneText
     },
     optionTwo: {
       votes: [],
-      text: optionTwoText,
+      text: optionTwoText
     }
   }
 }
 
-export function _saveQuestion (question) {
+export function _saveQuestion(question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
@@ -162,7 +174,9 @@ export function _saveQuestion (question) {
         ...users,
         [authedUser]: {
           ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
+          questions: users[authedUser]
+            .questions
+            .concat([formattedQuestion.id])
         }
       }
 
@@ -171,7 +185,7 @@ export function _saveQuestion (question) {
   })
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer({authedUser, qid, answer}) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -191,7 +205,9 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...questions[qid],
           [answer]: {
             ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
+            votes: questions[qid][answer]
+              .votes
+              .concat([authedUser])
           }
         }
       }
