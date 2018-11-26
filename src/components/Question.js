@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {answerQuestionAsync} from '../actions/questions';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 import {loadInitalDataAsync} from '../actions/shared';
 import { Button } from 'reactstrap';
 
@@ -78,4 +78,4 @@ function mapStateToProps({
     : null;
   return {question_id, question, author, authedUser}
 }
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));

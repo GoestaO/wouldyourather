@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {Nav, Navbar, NavbarBrand, NavItem, NavLink, Button} from 'reactstrap';
+import { Link } from 'react-router-dom';
 class Navigation extends Component {
   render() {
     return (<div>
       <Navbar color="light" expand="md">
-        <NavbarBrand href="/">Home</NavbarBrand>
+        <Link to="/">Home</Link>
 
         <Nav className="ml-left" navbar>
           <NavItem>

@@ -9,29 +9,20 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class Homepage extends React.Component {
 
-  componentDidMount() {
-    console.log(this.props.loading);
-    if (this.props.loading === true) {
-        this
-          .props
-          .dispatch(loadInitalDataAsync())
-    }
-  }
+  
   render() {
     // const showUnansweredQuestions = this.state.showUnansweredQuestions;
     return (<div>
-
-      {
-        this.props.loading
-          ? null
-          : (<QuestionList/>)
-      }
+      <LoadingBar/>
+      <QuestionList/>
     </div>)
   }
 }
 function mapStateToProps(state) {
+  console.log(state.loadingBar.default);
+  console.log(state.loadingBar.default === 0);
   return {
-    loading: (state.authedUser === null) && (Object.keys(state.questions).length === 0) && (Object.keys(state.users).length === 0)
+    loading: state.loadingBar.default === 0
   }
 }
 export default connect(mapStateToProps)(Homepage);
