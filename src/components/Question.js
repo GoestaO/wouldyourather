@@ -34,14 +34,14 @@ class Question extends React.Component {
   }
 
   render() {
-    const {question_id, question, author} = this.props;
+    const {question_id, question, author, authedUser} = this.props;
     const {redirectToStatistics} = this.state;
     if (redirectToStatistics === true) {
       return (<Redirect to={`/statistics/${question_id}`}/>)
     }
     return (
 
-      (question && author)
+      (question && author && authedUser !== null)
       ? (<div className="question">
         <h2>Would you rather</h2>
         <div>
@@ -72,7 +72,7 @@ function mapStateToProps({
 }, props) {
   const {question_id} = props.match.params;
   const question = questions[question_id];
-  console.log()
+  console.log(questions);
   const author = question
     ? users[question.author]
     : null;

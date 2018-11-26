@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 class Homepage extends React.Component {
 
   componentDidMount() {
+    console.log(this.props.loading);
     if (this.props.loading === true) {
         this
           .props

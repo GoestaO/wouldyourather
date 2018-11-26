@@ -36,7 +36,6 @@ function mapStateToProps({questions, authedUser, visibilityFilter}) {
     const questionArray = getNestedObjectAsArray(questions);
     switch (visibilityFilter) {
       case VisibilityFilters.SHOW_ANSWERED:
-        console.log(VisibilityFilters.SHOW_ANSWERED);
         filteredQuestions = questionArray.filter((question) => question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
         break;
       case VisibilityFilters.SHOW_UNANSWERED:
@@ -46,8 +45,10 @@ function mapStateToProps({questions, authedUser, visibilityFilter}) {
 
   }
 
+
+  // Sort by timestamp desc and return the ids only
   if (filteredQuestions && filteredQuestions.length > 0) {
-    filteredQuestionIds = filteredQuestions.map((question) => question.id)
+    filteredQuestionIds = filteredQuestions.sort((a, b) => b.timestamp - a.timestamp).map((question) => question.id)
   }
 
   return {questionIds: filteredQuestionIds, authedUser: authedUser, visibilityFilter}
