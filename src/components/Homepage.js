@@ -6,7 +6,6 @@ import Question from './Question';
 import QuestionListItem from './QuestionListItem';
 import LoadingBar from 'react-redux-loading';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Nav from './Nav';
 
 class Homepage extends React.Component {
 

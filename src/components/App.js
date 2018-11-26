@@ -6,7 +6,7 @@ import Question from './Question';
 import LoadingBar from 'react-redux-loading';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-import Nav from './Nav';
+import Navigation from './Navigation';
 import PollStatistics from './PollStatistics';
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
     return (<Router>
       <Fragment>
         <LoadingBar/>
-        <Nav/>
+        <Navigation/>
         <div className="App">
           {
             this.props.loading === null

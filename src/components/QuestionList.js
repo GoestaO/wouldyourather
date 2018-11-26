@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import QuestionListItem from './QuestionListItem';
 import {VisibilityFilters, toggleVisibility} from '../actions/visibilityFilter';
+import {ButtonGroup, Button, ListGroup, ListGroupItem} from 'reactstrap';
 
 class QuestionList extends React.Component {
 
@@ -13,7 +14,6 @@ class QuestionList extends React.Component {
   }
 
   render() {
-
     return (<div>
       {
         this.props.visibilityFilter === VisibilityFilters.SHOW_UNANSWERED
@@ -21,15 +21,14 @@ class QuestionList extends React.Component {
           : (<h3>Answered Questions</h3>)
       }
 
-      <ul className='dashboard-list'>
-        <button onClick={() => this.toggleVisibilityFilter()}>Toggle visiblity</button>
-        {this.props.questionIds && (this.props.questionIds.map((questionId) => <li key={questionId}><QuestionListItem question_id={questionId}/></li>))}
-      </ul>
+      <Button color="info" onClick={() => this.toggleVisibilityFilter()}>Toggle visiblity</Button>
+      <ListGroup>
+        {this.props.questionIds && (this.props.questionIds.map((questionId) => <ListGroupItem key={questionId}><QuestionListItem question_id={questionId}/></ListGroupItem>))}
+      </ListGroup>
     </div>);
   }
 }
 function mapStateToProps({questions, authedUser, visibilityFilter}) {
-  // const {showUnansweredQuestions} = this.state;
   let {filteredQuestions, filteredQuestionIds} = [];
 
   // Filter questions by checking votes contain authed User

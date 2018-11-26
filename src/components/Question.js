@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {answerQuestionAsync} from '../actions/questions';
 import {Redirect} from 'react-router-dom';
 import {loadInitalDataAsync} from '../actions/shared';
+import { Button } from 'reactstrap';
 
 class Question extends React.Component {
 
@@ -57,7 +58,7 @@ class Question extends React.Component {
             </label>
 
           </div>
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>)
       : null);
