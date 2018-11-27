@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import QuestionListItem from './QuestionListItem';
 import {VisibilityFilters, toggleVisibility} from '../actions/visibilityFilter';
 import {ButtonGroup, Button, ListGroup, ListGroupItem} from 'reactstrap';
+import {getObjectAsArray} from '../utils/helpers';
 
 class QuestionList extends React.Component {
 
@@ -33,7 +34,7 @@ function mapStateToProps({questions, authedUser, visibilityFilter}) {
 
   // Filter questions by checking votes contain authed User
   if (Object.keys(questions).length > 0) {
-    const questionArray = getNestedObjectAsArray(questions);
+    const questionArray = getObjectAsArray(questions);
     switch (visibilityFilter) {
       case VisibilityFilters.SHOW_ANSWERED:
         filteredQuestions = questionArray.filter((question) => question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
@@ -54,12 +55,5 @@ function mapStateToProps({questions, authedUser, visibilityFilter}) {
   return {questionIds: filteredQuestionIds, authedUser: authedUser, visibilityFilter}
 }
 
-const getNestedObjectAsArray = obj => {
-  let list = [];
-  for (var key in obj) {
-    list.push(obj[key]);
-  }
-  return list;
-}
 
 export default connect(mapStateToProps)(QuestionList);

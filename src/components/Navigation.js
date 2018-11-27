@@ -1,28 +1,32 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
-import {Nav, Navbar, NavbarBrand, NavItem, NavLink, Button} from 'reactstrap';
+import {Nav, Navbar, NavbarBrand, NavItem, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import LogoutButton from './LogoutButton';
+
 class Navigation extends Component {
   render() {
     return (<div>
       <Navbar color="light" expand="md">
         <Link to="/">Home</Link>
-
         <Nav className="ml-left" navbar>
-          <NavItem>
-            <NavLink href="/new">New Question</NavLink>
+          <NavItem className="ml-2">
+            <Link to="/new">New Question</Link>
           </NavItem>
-          <NavItem>
-            <NavLink href="/leaderboard">Leaderboard</NavLink>
+          <NavItem className="ml-2">
+            <Link to="/leaderboard">Leaderboard</Link>
+          </NavItem>
+          <NavItem className="ml-2">
+            <Link to="/login">Login</Link>
           </NavItem>
         </Nav>
         <Nav className="ml-auto">
           <NavItem className="mr-5">
-            {this.props.authedUserDetails &&(<img src={this.props.authedUserDetails.avatarURL} className="avatar"/>)}
-        {this.props.authedUserDetails &&(this.props.authedUserDetails.name)}
+            {this.props.authedUserDetails &&(<img src={this.props.authedUserDetails.avatarURL} className="avatar-nav"/>)}
+            {this.props.authedUserDetails &&(this.props.authedUserDetails.name)}
           </NavItem>
           <NavItem>
-            <Button>Logout</Button>
+            <LogoutButton />
           </NavItem>
         </Nav>
 

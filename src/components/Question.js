@@ -72,7 +72,6 @@ function mapStateToProps({
 }, props) {
   const {question_id} = props.match.params;
   const question = questions[question_id];
-  console.log(questions);
   const author = question
     ? users[question.author]
     : null;

@@ -9,28 +9,33 @@ import {connect} from 'react-redux';
 import Navigation from './Navigation';
 import PollStatistics from './PollStatistics';
 import {loadInitalDataAsync} from '../actions/shared';
+import Login from './Login';
+import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
   componentDidMount() {
-
-    console.log("fetching data");
-    this.props.dispatch(loadInitalDataAsync())
-
+    this
+      .props
+      .dispatch(loadInitalDataAsync(), () => console.log(this.props.loading));
   }
+
   render() {
     return (<Router>
       <Fragment>
         <LoadingBar/>
         <Navigation/>
         <div className="App">
-              <div>
-                  <Route exact path='/' component={Homepage}/>
-                  <Route path='/questions/:question_id' component={Question}/>
-                  <Route path='/statistics/:question_id' component={PollStatistics}/>
-                </div>
-    
-        </div>
 
+          {
+            this.props.loading === true
+              ? null
+              : (<div>
+                <Route path='/login' component={Login}/>
+                <PrivateRoute exact={true} authed = {this.props.authedUser} path='/' component={Homepage}/>
+                <PrivateRoute exact={true} authed = {this.props.authedUser} path='/questions/:question_id' component={Question}/>
+                <PrivateRoute exact={true} authed = {this.props.authedUser} path='/statistics/:question_id' component={PollStatistics}/></div>)
+          }
+        </div>
       </Fragment>
     </Router>)
   }
@@ -38,7 +43,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    loading: state.authedUser === null
+    loading: state.loadingBar.default === 1,
+    authedUser: state.authedUser
   }
 }
 

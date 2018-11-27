@@ -13,7 +13,6 @@ class PollStatistics extends Component {
       votesOptionOnePercent,
       votesOptionTwoPercent
     } = this.props;
-    //TODO: eigenes Voting hervorheben
     return (<div>
       {
         (question) && (<div>Statistics
