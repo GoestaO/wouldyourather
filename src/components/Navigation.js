@@ -11,13 +11,10 @@ class Navigation extends Component {
         <Link to="/">Home</Link>
         <Nav className="ml-left" navbar>
           <NavItem className="ml-2">
-            <Link to="/new">New Question</Link>
+            <Link to="/add">New Poll</Link>
           </NavItem>
           <NavItem className="ml-2">
             <Link to="/leaderboard">Leaderboard</Link>
-          </NavItem>
-          <NavItem className="ml-2">
-            <Link to="/login">Login</Link>
           </NavItem>
         </Nav>
         <Nav className="ml-auto">

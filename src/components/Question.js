@@ -39,6 +39,7 @@ class Question extends React.Component {
     if (redirectToStatistics === true) {
       return (<Redirect to={`/statistics/${question_id}`}/>)
     }
+
     return (
 
       (question && author && authedUser !== null)
@@ -69,8 +70,8 @@ function mapStateToProps({
   questions,
   users,
   authedUser
-}, props) {
-  const {question_id} = props.match.params;
+}, ownProps) {
+  const {question_id} = ownProps.match.params;
   const question = questions[question_id];
   const author = question
     ? users[question.author]

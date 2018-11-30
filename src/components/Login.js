@@ -40,7 +40,7 @@ class Login extends Component {
     if (this.state.redirectToHome === true) {
       return (<Redirect to="/"/>)
     }
-    return (<Container className="App">
+    return (<Container className="App col-sm-4">
       <h2>Sign In</h2>
       <Form className="form md-3" onSubmit={(e) => this.login(e)}>
         <Col>

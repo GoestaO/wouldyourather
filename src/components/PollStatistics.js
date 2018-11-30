@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loadInitalDataAsync} from '../actions/shared';
+import {withRouter} from 'react-router-dom';
 
 class PollStatistics extends Component {
 
@@ -68,8 +69,9 @@ function mapStateToProps({
     votesOptionTwo,
     votesTotal,
     votesOptionOnePercent,
-    votesOptionTwoPercent
+    votesOptionTwoPercent,
+    authedUser
   }
 }
 
-export default connect(mapStateToProps)(PollStatistics);
+export default withRouter(connect(mapStateToProps)(PollStatistics));

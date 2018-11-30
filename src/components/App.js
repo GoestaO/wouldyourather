@@ -11,6 +11,7 @@ import PollStatistics from './PollStatistics';
 import {loadInitalDataAsync} from '../actions/shared';
 import Login from './Login';
 import PrivateRoute from './PrivateRoute';
+import NewPoll from './NewPoll'
 
 class App extends Component {
   componentDidMount() {
@@ -32,8 +33,10 @@ class App extends Component {
               : (<div>
                 <Route path='/login' component={Login}/>
                 <PrivateRoute exact={true} authed = {this.props.authedUser} path='/' component={Homepage}/>
-                <PrivateRoute exact={true} authed = {this.props.authedUser} path='/questions/:question_id' component={Question}/>
-                <PrivateRoute exact={true} authed = {this.props.authedUser} path='/statistics/:question_id' component={PollStatistics}/></div>)
+                <PrivateRoute authed = {this.props.authedUser} path='/questions/:question_id' component={Question}/>
+                <PrivateRoute authed = {this.props.authedUser} path='/statistics/:question_id' component={PollStatistics}/>
+                <PrivateRoute exact={true} authed={this.props.authedUser} path='/add' component={NewPoll} />
+                  </div>)
           }
         </div>
       </Fragment>

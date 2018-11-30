@@ -1,4 +1,4 @@
-import {_getUsers, _getQuestions, _saveQuestionAnswer} from './_DATA';
+import {_getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion} from './_DATA';
 
 export function getInitialData() {
   return Promise
@@ -9,4 +9,8 @@ export function getInitialData() {
 export function saveQuestionAnswer(authedUser, qid, answer) {
   console.log("saving answer in db...")
   _saveQuestionAnswer({authedUser, qid, answer});
+}
+
+export function saveQuestion(question) {
+  return _saveQuestion(question);
 }
