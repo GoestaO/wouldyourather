@@ -4,11 +4,12 @@ import {Nav, Navbar, NavbarBrand, NavItem, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
 
+
 class Navigation extends Component {
   render() {
     return (<div>
       <Navbar color="light" expand="md">
-        <Link to="/">Home</Link>
+        <Link to="/">Dashboard</Link>
         <Nav className="ml-left" navbar>
           <NavItem className="ml-2">
             <Link to="/add">New Poll</Link>

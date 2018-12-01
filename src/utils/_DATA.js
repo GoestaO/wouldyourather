@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
+    avatarURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Contact-new.svg/1920px-Contact-new.svg.png",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -180,8 +180,7 @@ export function _saveQuestion(question) {
             .questions
             .concat([formattedQuestion.id])
         }
-      }
-
+      }      
       res(formattedQuestion)
     }, 1000)
   })

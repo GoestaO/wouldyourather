@@ -12,6 +12,7 @@ import {loadInitalDataAsync} from '../actions/shared';
 import Login from './Login';
 import PrivateRoute from './PrivateRoute';
 import NewPoll from './NewPoll'
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ class App extends Component {
                 <PrivateRoute authed = {this.props.authedUser} path='/questions/:question_id' component={Question}/>
                 <PrivateRoute authed = {this.props.authedUser} path='/statistics/:question_id' component={PollStatistics}/>
                 <PrivateRoute exact={true} authed={this.props.authedUser} path='/add' component={NewPoll} />
+                <PrivateRoute exact={true} authed={this.props.authedUser} path="/leaderboard" component={Leaderboard}/>
                   </div>)
           }
         </div>

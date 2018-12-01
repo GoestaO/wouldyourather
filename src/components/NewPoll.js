@@ -10,19 +10,16 @@ import {
 } from 'reactstrap';
 import {connect} from 'react-redux';
 import {createNewQuestionAsync} from '../actions/questions';
+import {Redirect} from 'react-router-dom';
 
-// ** The form is available at/add.
-// ** The application shows the text “Would You Rather” and has a form for creating two options.
-// ** Upon submitting the form, a new poll is created and the user is taken to the home page.
-// ** The new polling question appears in the correct category on the home page
-// ** Submit the form only, when
 
 class NewPoll extends Component {
   constructor(props) {
     super(props);
     this.state = {
       optionOneText: '',
-      optionTwoText: ''
+      optionTwoText: '',
+      redirectToHome: false
     }
   }
 
@@ -44,9 +41,13 @@ class NewPoll extends Component {
     this
       .props
       .dispatch(createNewQuestionAsync(question));
+    this.setState(() => ({redirectToHome: true}));
   }
 
   render() {
+    if (this.state.redirectToHome === true) {
+      return (<Redirect to="/"/>)
+    }
     return (<Col sm="6 offset-md-3">
       <Form className="form " onSubmit={(e) => this.handleSubmit(e)}>
         <h2>Create New Poll</h2>
@@ -66,7 +67,6 @@ class NewPoll extends Component {
     </Col>);
   }
 }
-
 const mapStateToProps = ({authedUser}) => {
   return {authedUser: authedUser};
 }
