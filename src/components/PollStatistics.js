@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loadInitalDataAsync} from '../actions/shared';
 import {withRouter} from 'react-router-dom';
-import {Container, Table, Badge} from 'reactstrap';
+import {Container, Table, Badge, Progress} from 'reactstrap';
 
 class PollStatistics extends Component {
 
@@ -19,14 +19,15 @@ class PollStatistics extends Component {
 
     return (<Container>
       {
-        (question) && (<div><h2>Statistics for would you rather ...</h2>
+        (question) && (<div>
+          <h2>Poll details</h2>
           <Table>
             <thead>
               <tr>
                 <th></th>
                 <th>Option</th>
-                <th>Number of votes</th>
-                <th>%</th>
+                <th>Votes</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -38,13 +39,16 @@ class PollStatistics extends Component {
                     </td>
                     <td>{question.optionOne.text}</td>
                     <td>{votesOptionOne}</td>
-                    <td>{votesOptionOnePercent.toFixed(2)}</td>
+                    <td>
+                      <Progress value={votesOptionOnePercent.toFixed(0)}/> {votesOptionOnePercent.toFixed(0)}
+                      %
+                    </td>
                   </tr>)
                   : (<tr>
                     <td></td>
                     <td>{question.optionOne.text}</td>
                     <td>{votesOptionOne}</td>
-                    <td>{votesOptionOnePercent.toFixed(2)}</td>
+                    <td><Progress value={votesOptionOnePercent.toFixed(0)}/> {votesOptionOnePercent.toFixed(0)}%</td>
                   </tr>)
               }
               {
@@ -55,13 +59,13 @@ class PollStatistics extends Component {
                     </td>
                     <td>{question.optionTwo.text}</td>
                     <td>{votesOptionTwo}</td>
-                    <td>{votesOptionTwoPercent.toFixed(2)}</td>
+                    <td><Progress value={votesOptionTwoPercent.toFixed(0)}/>{votesOptionTwoPercent.toFixed()}%</td>
                   </tr>)
                   : (<tr>
                     <td></td>
                     <td>{question.optionTwo.text}</td>
                     <td>{votesOptionTwo}</td>
-                    <td>{votesOptionTwoPercent.toFixed(2)}</td>
+                    <td><Progress value={votesOptionTwoPercent.toFixed(0)}/> {votesOptionTwoPercent.toFixed(0)}%</td>
                   </tr>)
               }
             </tbody>
@@ -71,7 +75,6 @@ class PollStatistics extends Component {
     </Container>)
   }
 }
-
 function mapStateToProps({
   questions,
   authedUser,

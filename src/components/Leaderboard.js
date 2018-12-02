@@ -20,7 +20,9 @@ class Leaderboard extends Component {
         </thead>
         <tbody>
           {
-            userRanking.map((entry) => <tr key={entry[0]} className={entry[0] === authedUser ? "table-info" : null}>
+            userRanking.map((entry) => <tr key={entry[0]} className={entry[0] === authedUser
+              ? "table-info"
+              : null}>
               <td>
                 {entry[1]}
                 <img src={entry[2]} className="avatar"/>
@@ -72,8 +74,7 @@ const createUserRanking = (questions, users) => {
       let numAnsweredQuestions = countAnsweredQuestionsOfUser(users, userId);
       let totalPoints = numOwnQuestions + numAnsweredQuestions;
       ranking.push([
-userId,
-        users[userId].name,
+        userId, users[userId].name,
         users[userId].avatarURL,
         numOwnQuestions,
         numAnsweredQuestions,

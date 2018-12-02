@@ -4,7 +4,7 @@ import '../App.css';
 import Homepage from './Homepage';
 import Question from './Question';
 import LoadingBar from 'react-redux-loading';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Navigation from './Navigation';
 import PollStatistics from './PollStatistics';
@@ -13,6 +13,7 @@ import Login from './Login';
 import PrivateRoute from './PrivateRoute';
 import NewPoll from './NewPoll'
 import Leaderboard from './Leaderboard';
+import NoMatch from './NoMatch';
 
 class App extends Component {
   componentDidMount() {
@@ -32,13 +33,15 @@ class App extends Component {
             this.props.loading === true
               ? null
               : (<div>
-                <Route path='/login' component={Login}/>
-                <PrivateRoute exact={true} authed = {this.props.authedUser} path='/' component={Homepage}/>
-                <PrivateRoute authed = {this.props.authedUser} path='/questions/:question_id' component={Question}/>
-                <PrivateRoute authed = {this.props.authedUser} path='/statistics/:question_id' component={PollStatistics}/>
-                <PrivateRoute exact={true} authed={this.props.authedUser} path='/add' component={NewPoll} />
-                <PrivateRoute exact={true} authed={this.props.authedUser} path="/leaderboard" component={Leaderboard}/>
-                  </div>)
+                <Switch>
+                  <Route path='/login' component={Login}/>
+                  <PrivateRoute authed = {this.props.authedUser} path='/' exact component={Homepage}/>
+                  <PrivateRoute authed = {this.props.authedUser} exact path='/questions/:question_id' component={Question}/>
+                  <PrivateRoute authed = {this.props.authedUser} exact path='/statistics/:question_id' component={PollStatistics}/>
+                  <PrivateRoute authed={this.props.authedUser} exact path='/add' component={NewPoll} />
+                  <PrivateRoute authed={this.props.authedUser} exact path="/leaderboard" component={Leaderboard}/>
+                  <Route component={NoMatch}/>
+                </Switch></div>)
           }
         </div>
       </Fragment>

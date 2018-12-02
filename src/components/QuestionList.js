@@ -22,7 +22,7 @@ class QuestionList extends React.Component {
           : (<h3>Answered Questions</h3>)
       }
 
-      <Button color="info" onClick={() => this.toggleVisibilityFilter()}>Toggle visiblity</Button>
+      <Button color="primary" onClick={() => this.toggleVisibilityFilter()}>{this.props.visibilityFilter === VisibilityFilters.SHOW_UNANSWERED ? ("Show answered") : ("Show unanswered")}</Button>
       <ListGroup>
         {this.props.questionIds && (this.props.questionIds.map((questionId) => <ListGroupItem key={questionId}><QuestionListItem question_id={questionId}/></ListGroupItem>))}
       </ListGroup>

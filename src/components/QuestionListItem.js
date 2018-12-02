@@ -16,14 +16,13 @@ class QuestionListItem extends React.Component {
 
   render() {
     const {question_id, question} = this.props
-    return (<Link to={`/questions/${question_id}`}>
-      <Card>
-        <CardBody>
-          <CardTitle>Would you rather</CardTitle>
-          <CardText>{question.optionOne.text}...</CardText>
-        </CardBody>
-      </Card>
-    </Link>);
+    return (<Card>
+      <CardBody>
+        <CardTitle>Would You Rather...</CardTitle>
+        <CardText>{question.optionOne.text}...</CardText>
+      </CardBody>
+      <Link role="button" className="card-link" to={`/questions/${question_id}`}>View Poll</Link>
+    </Card>);
   }
 }
 function mapStateToProps({
