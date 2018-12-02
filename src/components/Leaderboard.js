@@ -25,7 +25,7 @@ class Leaderboard extends Component {
               : null}>
               <td>
                 {entry[1]}
-                <img src={entry[2]} className="avatar"/>
+                <img src={entry[2]} alt="avatar of the user"className="avatar"/>
               </td>
               <td>{entry[3]}</td>
               <td>{entry[4]}</td>
@@ -52,8 +52,7 @@ const mapStateToProps = ({authedUser, users, questions}) => {
   return {authedUser, userRanking, users}
 }
 
-const countAnsweredQuestionsOfUser = (users, userId) => {
-  let user = users[userId];
+const countAnsweredQuestionsOfUser = (users, userId) => {  
   return Object
     .keys(users[userId].answers)
     .length

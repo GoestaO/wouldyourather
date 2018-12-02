@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
-import {Nav, Navbar, NavbarBrand, NavItem, Button} from 'reactstrap';
+import {Nav, Navbar, NavItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
 
@@ -20,7 +20,7 @@ class Navigation extends Component {
         </Nav>
         <Nav className="ml-auto">
           <NavItem className="mr-5">
-            {this.props.authedUserDetails &&(<img src={this.props.authedUserDetails.avatarURL} className="avatar-nav"/>)}
+            {this.props.authedUserDetails &&(<img src={this.props.authedUserDetails.avatarURL} alt="avatar of the user" className="avatar-nav"/>)}
             {this.props.authedUserDetails &&(this.props.authedUserDetails.name)}
           </NavItem>
           <NavItem>

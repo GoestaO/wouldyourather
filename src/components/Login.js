@@ -9,7 +9,6 @@ import {
   Button
 } from 'reactstrap';
 import {connect} from 'react-redux';
-import {getObjectAsArray} from '../utils/helpers';
 import {setAuthedUser} from '../actions/authedUser';
 import {Redirect} from 'react-router-dom';
 

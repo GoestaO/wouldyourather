@@ -1,4 +1,4 @@
-import {RECEIVE_QUESTIONS, ANSWER_QUESTION, SHOW_UNANSWERED_QUESTIONS, CREATE_QUESTION} from '../actions/questions'
+import {RECEIVE_QUESTIONS, ANSWER_QUESTION, CREATE_QUESTION} from '../actions/questions'
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -9,9 +9,8 @@ export default function questions(state = {}, action) {
       }
     case ANSWER_QUESTION:
       let authedUser = action.authedUser;
-      let qid = action.qid
-      let foundQuestion = state[qid]
-      let answer = action.answer
+      let qid = action.qid;
+      let answer = action.answer;
       return {
         ...state,
         [qid]: {

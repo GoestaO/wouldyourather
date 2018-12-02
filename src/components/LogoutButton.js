@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Button} from 'reactstrap';
-import {Redirect} from 'react-router-dom';
 import {setAuthedUser} from '../actions/authedUser';
 import {connect} from 'react-redux';
 

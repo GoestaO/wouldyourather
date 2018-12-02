@@ -1,15 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Col} from 'reactstrap';
 import {
   Card,
-  CardImg,
   CardText,
   CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
+  CardTitle
 } from 'reactstrap';
 
 class QuestionListItem extends React.Component {

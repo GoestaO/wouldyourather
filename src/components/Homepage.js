@@ -1,10 +1,5 @@
-import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
-import {loadInitalDataAsync} from '../actions/shared';
+import React from 'react';
 import QuestionList from './QuestionList';
-import Question from './Question';
-import QuestionListItem from './QuestionListItem';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Col} from 'reactstrap';
 class Homepage extends React.Component {
 

@@ -18,6 +18,8 @@ export function toggleVisibility(filter) {
     case VisibilityFilters.SHOW_UNANSWERED:
       newFilter = VisibilityFilters.SHOW_ANSWERED
       break;
+    default:
+      newFilter = VisibilityFilters.SHOW_UNANSWERED
   }
   return(dispatch) => {
     dispatch(setVisibilityFilter(newFilter));

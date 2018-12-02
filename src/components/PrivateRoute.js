@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Redirect, Link} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
 
 // Inspired by https://tylermcginnis.com/react-router-protected-routes-authentication/ and
 // https://gist.github.com/abohannon/cca2dd998edf9dc2c2165f538eece4b2

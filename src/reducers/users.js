@@ -11,7 +11,6 @@ export default function users(state = {}, action) {
       }
     case CREATE_QUESTION:
       const {question} = action;
-      let author = action.question.author;
       return {
         ...state,
         [question.author]: {
@@ -24,7 +23,6 @@ export default function users(state = {}, action) {
       }
     case ANSWER_QUESTION:
       let {authedUser, qid, answer} = action;
-      let user = state[authedUser];
       return {
         ...state,
         [authedUser]: {

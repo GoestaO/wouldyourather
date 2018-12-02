@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {answerQuestionAsync} from '../actions/questions';
 import {Redirect, withRouter} from 'react-router-dom';
-import {loadInitalDataAsync} from '../actions/shared';
 import { Button } from 'reactstrap';
 
 class Question extends React.Component {

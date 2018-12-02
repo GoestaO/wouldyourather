@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import QuestionListItem from './QuestionListItem';
 import {VisibilityFilters, toggleVisibility} from '../actions/visibilityFilter';
-import {ButtonGroup, Button, ListGroup, ListGroupItem} from 'reactstrap';
+import {Button, ListGroup, ListGroupItem} from 'reactstrap';
 import {getObjectAsArray} from '../utils/helpers';
 
 class QuestionList extends React.Component {
@@ -22,7 +22,11 @@ class QuestionList extends React.Component {
           : (<h3>Answered Questions</h3>)
       }
 
-      <Button color="primary" onClick={() => this.toggleVisibilityFilter()}>{this.props.visibilityFilter === VisibilityFilters.SHOW_UNANSWERED ? ("Show answered") : ("Show unanswered")}</Button>
+      <Button color="primary" onClick={() => this.toggleVisibilityFilter()}>{
+          this.props.visibilityFilter === VisibilityFilters.SHOW_UNANSWERED
+            ? ("Show answered")
+            : ("Show unanswered")
+        }</Button>
       <ListGroup>
         {this.props.questionIds && (this.props.questionIds.map((questionId) => <ListGroupItem key={questionId}><QuestionListItem question_id={questionId}/></ListGroupItem>))}
       </ListGroup>
@@ -42,18 +46,20 @@ function mapStateToProps({questions, authedUser, visibilityFilter}) {
       case VisibilityFilters.SHOW_UNANSWERED:
         filteredQuestions = questionArray.filter((question) => !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser))
         break;
+      default:
+        filteredQuestions = []
     }
 
   }
 
-
   // Sort by timestamp desc and return the ids only
   if (filteredQuestions && filteredQuestions.length > 0) {
-    filteredQuestionIds = filteredQuestions.sort((a, b) => b.timestamp - a.timestamp).map((question) => question.id)
+    filteredQuestionIds = filteredQuestions
+      .sort((a, b) => b.timestamp - a.timestamp)
+      .map((question) => question.id)
   }
 
   return {questionIds: filteredQuestionIds, authedUser: authedUser, visibilityFilter}
 }
-
 
 export default connect(mapStateToProps)(QuestionList);

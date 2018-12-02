@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {loadInitalDataAsync} from '../actions/shared';
 import {withRouter} from 'react-router-dom';
 import {Container, Table, Badge, Progress} from 'reactstrap';
 
@@ -10,8 +9,7 @@ class PollStatistics extends Component {
     const {
       question,
       votesOptionOne,
-      votesOptionTwo,
-      votesTotal,
+      votesOptionTwo,      
       votesOptionOnePercent,
       votesOptionTwoPercent,
       voteAuthedUser

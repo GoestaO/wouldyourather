@@ -1,5 +1,4 @@
 import {saveQuestionAnswer, saveQuestion} from '../utils/api';
-import {addQuestionToUserQuestions, addAnswerToUser} from './users';
 
 // action constants
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
