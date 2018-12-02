@@ -1,4 +1,5 @@
 import {saveQuestionAnswer, saveQuestion} from '../utils/api';
+import {addQuestionToUserQuestions, addAnswerToUser} from './users';
 
 // action constants
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
@@ -26,7 +27,7 @@ export function answerQuestionAsync(authedUser, qid, answer) {
   }
 }
 
-// TODO: check if optimistic update doable
+// Optimistic update not possible as we have to wait for the formattedQuestion with the correct question id. The api is the single source of truth
 export function createNewQuestionAsync({optionOneText, optionTwoText, author}) {
   return(dispatch) => {
     return saveQuestion({optionOneText, optionTwoText, author}).then((question) => {

@@ -12,7 +12,6 @@ export default function users(state = {}, action) {
     case CREATE_QUESTION:
       const {question} = action;
       let author = action.question.author;
-      console.log('appending question to user object...');
       return {
         ...state,
         [question.author]: {
