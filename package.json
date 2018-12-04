@@ -2,7 +2,7 @@
   "name": "wouldyourather",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://goestao/github.io",
+  "homepage": "https://goestao/github.io/wouldyourather",
   "dependencies": {
     "bootstrap": "^4.1.3",
     "gh-pages": "^2.0.1",
