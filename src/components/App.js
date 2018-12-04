@@ -23,16 +23,14 @@ class App extends Component {
 
   render() {
     const {authedUser} = this.props;
-    return (<Router basename={process.env.PUBLIC_URL}>
+    return (<Router>
       <Fragment>
-        <LoadingBar/>
-        <Navigation/>
         <div className="App">
-
           {
             this.props.loading === true
-              ? null
+              ? <LoadingBar/>
               : (<div>
+                <Navigation/>
                 <Switch>
                   <Route path='/login' component={Login}/>
                   <PrivateRoute authed = {authedUser} exact path='/' component={Homepage}/>
