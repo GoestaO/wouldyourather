@@ -18,11 +18,12 @@ class App extends Component {
   componentDidMount() {
     this
       .props
-      .dispatch(loadInitalDataAsync(), () => console.log(this.props.loading));
+      .dispatch(loadInitalDataAsync());
   }
 
   render() {
-    return (<Router>
+    const {authedUser} = this.props;
+    return (<Router basename={process.env.PUBLIC_URL}>
       <Fragment>
         <LoadingBar/>
         <Navigation/>
@@ -34,11 +35,13 @@ class App extends Component {
               : (<div>
                 <Switch>
                   <Route path='/login' component={Login}/>
-                  <PrivateRoute authed = {this.props.authedUser} path='/' exact component={Homepage}/>
-                  <PrivateRoute authed = {this.props.authedUser} exact path='/questions/:question_id' component={Question}/>
-                  <PrivateRoute authed = {this.props.authedUser} exact path='/statistics/:question_id' component={PollStatistics}/>
-                  <PrivateRoute authed={this.props.authedUser} exact path='/add' component={NewPoll} />
-                  <PrivateRoute authed={this.props.authedUser} exact path="/leaderboard" component={Leaderboard}/>
+                  <PrivateRoute authed = {authedUser} exact path='/' component={Homepage}/>
+                  <PrivateRoute authed = {authedUser} exact path='/questions/:question_id' component={Question}/>
+                  <PrivateRoute authed = {authedUser} exact path='/statistics/:question_id' component={PollStatistics}/>
+                  <PrivateRoute authed={authedUser} exact path='/add' component={NewPoll} />
+                  <PrivateRoute authed={authedUser} exact path="/leaderboard" component={Leaderboard}/>
+
+                  {/* https://tylermcginnis.com/react-router-handling-404-pages */}
                   <Route component={NoMatch}/>
                 </Switch></div>)
           }

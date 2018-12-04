@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 class LogoutButton extends Component {
 
   logout = () => {
+    // Simply invalidate the authedUser 
     this
       .props
       .dispatch(setAuthedUser(null));

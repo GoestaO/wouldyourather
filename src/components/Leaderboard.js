@@ -39,11 +39,11 @@ class Leaderboard extends Component {
 }
 
 const mapStateToProps = ({authedUser, users, questions}) => {
-  // sorts by the 4th entry descending
+  // sorts by the total points descending
   const Comparator = (a, b) => {
-    if (a[4] < b[4])
+    if (a[5] < b[5])
       return 1;
-    if (a[4] > b[4])
+    if (a[5] > b[5])
       return -1;
     return 0;
   }
@@ -52,7 +52,7 @@ const mapStateToProps = ({authedUser, users, questions}) => {
   return {authedUser, userRanking, users}
 }
 
-const countAnsweredQuestionsOfUser = (users, userId) => {  
+const countAnsweredQuestionsOfUser = (users, userId) => {
   return Object
     .keys(users[userId].answers)
     .length

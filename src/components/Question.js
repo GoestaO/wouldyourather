@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {answerQuestionAsync} from '../actions/questions';
 import {Redirect, withRouter} from 'react-router-dom';
-import { Button } from 'reactstrap';
+import {Button} from 'reactstrap';
 
 class Question extends React.Component {
 
@@ -37,6 +37,9 @@ class Question extends React.Component {
     const {redirectToStatistics} = this.state;
     if (redirectToStatistics === true) {
       return (<Redirect to={`/statistics/${question_id}`}/>)
+    }
+    if (question === undefined) {
+      return <Redirect to="/page-not-found"/>
     }
 
     return (
