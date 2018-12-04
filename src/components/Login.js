@@ -18,7 +18,7 @@ class Login extends Component {
     super(props);
     this.state = {
       selectedUserId: '',
-      redirectToHome: false
+      redirectToReferrer: false
     }
   }
 
@@ -32,12 +32,18 @@ class Login extends Component {
     this
       .props
       .dispatch(setAuthedUser(selectedUserId));
-    this.setState({selectedUserId: '', redirectToHome: true})
+    this.setState({selectedUserId: '', redirectToReferrer: true})
   }
 
   render() {
-    if (this.state.redirectToHome === true) {
-      return (<Redirect to="/"/>)
+    const {from} = this.props.location.state || {
+      from: {
+        pathname: '/'
+      }
+    };
+    const {redirectToReferrer} = this.state
+    if (redirectToReferrer === true) {
+      return (<Redirect to={from}/>)
     }
     return (<Container className="App col-sm-4">
       <h2>Sign In</h2>

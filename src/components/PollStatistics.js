@@ -9,7 +9,7 @@ class PollStatistics extends Component {
     const {
       question,
       votesOptionOne,
-      votesOptionTwo,      
+      votesOptionTwo,
       votesOptionOnePercent,
       votesOptionTwoPercent,
       voteAuthedUser
@@ -33,7 +33,7 @@ class PollStatistics extends Component {
                 voteAuthedUser === "optionOne"
                   ? (<tr className="table-info">
                     <td>
-                      <Badge color="secondary">Your response</Badge>
+                      <Badge color="secondary">Your answer</Badge>
                     </td>
                     <td>{question.optionOne.text}</td>
                     <td>{votesOptionOne}</td>
@@ -53,7 +53,7 @@ class PollStatistics extends Component {
                 voteAuthedUser === "optionTwo"
                   ? (<tr className="table-info">
                     <td>
-                      <Badge color="secondary">Your response</Badge>
+                      <Badge color="secondary">Your answer</Badge>
                     </td>
                     <td>{question.optionTwo.text}</td>
                     <td>{votesOptionTwo}</td>

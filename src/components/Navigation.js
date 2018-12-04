@@ -27,7 +27,6 @@ class Navigation extends Component {
             <LogoutButton />
           </NavItem>
         </Nav>
-
       </Navbar>
     </div>)
   }

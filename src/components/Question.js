@@ -2,7 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {answerQuestionAsync} from '../actions/questions';
 import {Redirect, withRouter} from 'react-router-dom';
-import {Button} from 'reactstrap';
+import {
+  Button,
+  Input,
+  Form,  
+  Label,
+  Row,
+  Col, Badge
+} from 'reactstrap';
 
 class Question extends React.Component {
 
@@ -14,8 +21,6 @@ class Question extends React.Component {
       redirectToStatistics: false
     }
   }
-
-  //TODO: Wenn Frage schon beantwortet, radiobutton mit der Antwort vorselektieren
 
   answerQuestion = (event) => {
     event.preventDefault();
@@ -33,7 +38,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const {question_id, question, author, authedUser} = this.props;
+    const {question_id, question, author, authedUser, users} = this.props;
     const {redirectToStatistics} = this.state;
     if (redirectToStatistics === true) {
       return (<Redirect to={`/statistics/${question_id}`}/>)
@@ -43,26 +48,33 @@ class Question extends React.Component {
     }
 
     return (
-
       (question && author && authedUser !== null)
-      ? (<div className="question">
-        <h2>Would you rather</h2>
+      ? (<div>
         <div>
           <img src={author.avatarURL} alt={`Avatar of ${author.name}`} className='avatar'/>
-          <span>{author.name}</span>
         </div>
-        <form onSubmit={(e) => this.answerQuestion(e)}>
-          <div className="question-options">
-            <label>
-              <input type="radio" name="answer" value="optionOne" onChange={this._handleRadio}/>{question && question.optionOne.text}
-            </label>
-            <label>
-              <input type="radio" name="answer" value="optionTwo" onChange={this._handleRadio}/>{question && question.optionTwo.text}
-            </label>
+        <div>
+          {author.name}
+          {' asks:'}
+        </div>
+        <h4>Would You Rather</h4>
 
-          </div>
+        <Form onSubmit={(e) => this.answerQuestion(e)}>
+          <Row>
+            <Col className="col-sm-4 offset-sm-2">
+              <Label>
+                <Input type="radio" name="answer" value="optionOne" onChange={this._handleRadio} defaultChecked={users[authedUser].answers[question_id] === "optionOne"}/> {question.optionOne.text} {users[authedUser].answers[question_id] === "optionOne" ? (<Badge color="secondary">Your answer</Badge>) : null}
+              </Label>
+            </Col>
+            OR
+            <Col className="col-sm-4">
+              <Label>
+                <Input type="radio" name="answer" value="optionTwo" onChange={this._handleRadio} defaultChecked={users[authedUser].answers[question_id] === "optionTwo"}/> {question.optionTwo.text} {users[authedUser].answers[question_id] === "optionTwo" ? (<Badge color="secondary">Your answer</Badge>) : null}
+              </Label>
+            </Col>
+          </Row>
           <Button type="submit">Submit</Button>
-        </form>
+        </Form>
       </div>)
       : null);
   }
@@ -78,6 +90,6 @@ function mapStateToProps({
   const author = question
     ? users[question.author]
     : null;
-  return {question_id, question, author, authedUser}
+  return {question_id, question, author, authedUser, users}
 }
 export default withRouter(connect(mapStateToProps)(Question));

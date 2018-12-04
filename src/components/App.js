@@ -3,7 +3,7 @@ import '../App.css';
 import Homepage from './Homepage';
 import Question from './Question';
 import LoadingBar from 'react-redux-loading';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Navigation from './Navigation';
 import PollStatistics from './PollStatistics';
