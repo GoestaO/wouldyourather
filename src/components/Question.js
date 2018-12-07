@@ -5,10 +5,11 @@ import {Redirect, withRouter} from 'react-router-dom';
 import {
   Button,
   Input,
-  Form,  
+  Form,
   Label,
   Row,
-  Col, Badge
+  Col,
+  Badge
 } from 'reactstrap';
 
 class Question extends React.Component {
@@ -38,8 +39,16 @@ class Question extends React.Component {
   }
 
   render() {
-    const {question_id, question, author, authedUser, users} = this.props;
+    const {
+      question_id,
+      question,
+      author,
+      authedUser,
+      users,
+      visibilityFilter
+    } = this.props;
     const {redirectToStatistics} = this.state;
+
     if (redirectToStatistics === true) {
       return (<Redirect to={`/statistics/${question_id}`}/>)
     }
@@ -63,17 +72,27 @@ class Question extends React.Component {
           <Row>
             <Col className="col-sm-4 offset-sm-2">
               <Label>
-                <Input type="radio" name="answer" value="optionOne" onChange={this._handleRadio} defaultChecked={users[authedUser].answers[question_id] === "optionOne"}/> {question.optionOne.text} {users[authedUser].answers[question_id] === "optionOne" ? (<Badge color="secondary">Your answer</Badge>) : null}
+                <Input type="radio" name="answer" value="optionOne" onChange={this._handleRadio} defaultChecked={users[authedUser].answers[question_id] === "optionOne"}/> {question.optionOne.text}
+                {
+                  users[authedUser].answers[question_id] === "optionOne"
+                    ? (<Badge color="secondary">Your answer</Badge>)
+                    : null
+                }
               </Label>
             </Col>
             OR
             <Col className="col-sm-4">
               <Label>
-                <Input type="radio" name="answer" value="optionTwo" onChange={this._handleRadio} defaultChecked={users[authedUser].answers[question_id] === "optionTwo"}/> {question.optionTwo.text} {users[authedUser].answers[question_id] === "optionTwo" ? (<Badge color="secondary">Your answer</Badge>) : null}
+                <Input type="radio" name="answer" value="optionTwo" onChange={this._handleRadio} defaultChecked={users[authedUser].answers[question_id] === "optionTwo"}/> {question.optionTwo.text}
+                {
+                  users[authedUser].answers[question_id] === "optionTwo"
+                    ? (<Badge color="secondary">Your answer</Badge>)
+                    : null
+                }
               </Label>
             </Col>
           </Row>
-          <Button type="submit">Submit</Button>
+          <Button color="primary" type="submit" disabled={visibilityFilter === "SHOW_ANSWERED"}>Submit</Button>
         </Form>
       </div>)
       : null);
@@ -83,13 +102,21 @@ class Question extends React.Component {
 function mapStateToProps({
   questions,
   users,
-  authedUser
+  authedUser,
+  visibilityFilter
 }, ownProps) {
   const {question_id} = ownProps.match.params;
   const question = questions[question_id];
   const author = question
     ? users[question.author]
     : null;
-  return {question_id, question, author, authedUser, users}
+  return {
+    question_id,
+    question,
+    author,
+    authedUser,
+    users,
+    visibilityFilter
+  }
 }
 export default withRouter(connect(mapStateToProps)(Question));

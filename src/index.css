@@ -9,3 +9,8 @@
   border-radius: 25px;
   margin: 0px;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}

@@ -25,6 +25,7 @@ class NewPoll extends Component {
   handleChangeOptionOne = (e) => {
     const input = e.currentTarget.value;
     this.setState(() => ({optionOneText: input}))
+    console.log(this.state.optionOne === '' || this.state.optionTwo === '')
   }
   handleChangeOptionTwo = (e) => {
     const input = e.currentTarget.value;
@@ -61,7 +62,7 @@ class NewPoll extends Component {
           <Label>Option Two</Label>
           <Input type="text" name="optionTwo" id="optionTwo" onChange={(e) => this.handleChangeOptionTwo(e)}/>
         </FormGroup>
-        <Button color="primary" type="submit" disabled={this.state.optionOne === '' || this.state.optionTwo === ''}>Submit</Button>
+        <Button color="primary" type="submit" disabled={this.state.optionOneText === '' || this.state.optionTwoText === ''}>Submit</Button>
       </Form>
     </Col>);
   }

@@ -12,6 +12,7 @@ class Leaderboard extends Component {
       <Table responsive="responsive">
         <thead>
           <tr>
+            <th>Nr.</th>
             <th>Name</th>
             <th>Questions asked</th>
             <th>Questions answered</th>
@@ -20,12 +21,13 @@ class Leaderboard extends Component {
         </thead>
         <tbody>
           {
-            userRanking.map((entry) => <tr key={entry[0]} className={entry[0] === authedUser
+            userRanking.map((entry, index) => <tr key={entry[0]} className={entry[0] === authedUser
               ? "table-info"
               : null}>
+              <td>{index+1}</td>
               <td>
                 {entry[1]}
-                <img src={entry[2]} alt="avatar of the user"className="avatar"/>
+                <img src={entry[2]} alt="avatar of the user" className="avatar"/>
               </td>
               <td>{entry[3]}</td>
               <td>{entry[4]}</td>
