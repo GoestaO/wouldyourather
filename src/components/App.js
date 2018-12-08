@@ -1,16 +1,16 @@
 import React, {Component, Fragment} from 'react';
 import '../App.css';
-import Homepage from './Homepage';
+import Dashboard from './Dashboard';
 import Question from './Question';
 import LoadingBar from 'react-redux-loading';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Navigation from './Navigation';
-import PollStatistics from './PollStatistics';
+import QuestionStatistics from './QuestionStatistics';
 import {loadInitalDataAsync} from '../actions/shared';
 import Login from './Login';
 import PrivateRoute from './PrivateRoute';
-import NewPoll from './NewPoll'
+import NewQuestion from './NewQuestion'
 import Leaderboard from './Leaderboard';
 import NoMatch from './NoMatch';
 
@@ -33,10 +33,10 @@ class App extends Component {
                 <Navigation/>
                 <Switch>
                   <Route path='/login' component={Login}/>
-                  <PrivateRoute authed = {authedUser} exact path='/' component={Homepage}/>
+                  <PrivateRoute authed = {authedUser} exact path='/' component={Dashboard}/>
                   <PrivateRoute authed = {authedUser} exact path='/questions/:question_id' component={Question}/>
-                  <PrivateRoute authed = {authedUser} exact path='/statistics/:question_id' component={PollStatistics}/>
-                  <PrivateRoute authed={authedUser} exact path='/add' component={NewPoll} />
+                  <PrivateRoute authed = {authedUser} exact path='/statistics/:question_id' component={QuestionStatistics}/>
+                  <PrivateRoute authed={authedUser} exact path='/add' component={NewQuestion} />
                   <PrivateRoute authed={authedUser} exact path="/leaderboard" component={Leaderboard}/>
 
                   {/* https://tylermcginnis.com/react-router-handling-404-pages */}

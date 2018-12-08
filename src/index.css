@@ -14,3 +14,7 @@ button:disabled {
   cursor: not-allowed;
   pointer-events: all !important;
 }
+
+#leaderboard td {
+  vertical-align: middle;
+}

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {Container, Table, Badge, Progress} from 'reactstrap';
 
-class PollStatistics extends Component {
+class QuestionStatistics extends Component {
 
   render() {
     const {
@@ -18,7 +18,7 @@ class PollStatistics extends Component {
     return (<Container>
       {
         (question) && (<div>
-          <h2>Poll details</h2>
+          <h2>Question Statistics</h2>
           <Table>
             <thead>
               <tr>
@@ -106,4 +106,4 @@ function mapStateToProps({
   }
 }
 
-export default withRouter(connect(mapStateToProps)(PollStatistics));
+export default withRouter(connect(mapStateToProps)(QuestionStatistics));

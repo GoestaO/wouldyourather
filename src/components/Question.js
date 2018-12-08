@@ -92,7 +92,7 @@ class Question extends React.Component {
               </Label>
             </Col>
           </Row>
-          <Button color="primary" type="submit" disabled={visibilityFilter === "SHOW_ANSWERED"}>Submit</Button>
+          <Button color="primary" type="submit" disabled={visibilityFilter === "SHOW_ANSWERED" || this.state.answer === ''}>Submit</Button>
         </Form>
       </div>)
       : null);

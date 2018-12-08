@@ -9,7 +9,7 @@ class Leaderboard extends Component {
     const {authedUser, userRanking} = this.props;
     return (<Container>
       <h2>Leaderboard</h2>
-      <Table responsive="responsive">
+      <Table responsive="responsive" id="leaderboard">
         <thead>
           <tr>
             <th>Nr.</th>
@@ -26,8 +26,8 @@ class Leaderboard extends Component {
               : null}>
               <td>{index+1}</td>
               <td>
-                {entry[1]}
                 <img src={entry[2]} alt="avatar of the user" className="avatar"/>
+                {entry[1]}
               </td>
               <td>{entry[3]}</td>
               <td>{entry[4]}</td>

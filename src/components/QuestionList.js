@@ -2,31 +2,30 @@ import React from 'react';
 import {connect} from 'react-redux';
 import QuestionListItem from './QuestionListItem';
 import {VisibilityFilters, toggleVisibility} from '../actions/visibilityFilter';
-import {Button, ListGroup, ListGroupItem} from 'reactstrap';
+import {Button, ButtonGroup, ListGroup, ListGroupItem} from 'reactstrap';
 import {getObjectAsArray} from '../utils/helpers';
 
 class QuestionList extends React.Component {
 
-  toggleVisibilityFilter = () => {
-    const filter = this.props.visibilityFilter;
+  toggleVisibilityFilter = (filter) => {
     this
       .props
       .dispatch(toggleVisibility(filter));
   }
 
   render() {
+  const {visibilityFilter} = this.props;
     return (<div>
       {
-        this.props.visibilityFilter === VisibilityFilters.SHOW_UNANSWERED
+        visibilityFilter === VisibilityFilters.SHOW_UNANSWERED
           ? (<h3>Unanswered Questions</h3>)
           : (<h3>Answered Questions</h3>)
       }
 
-      <Button color="primary" onClick={() => this.toggleVisibilityFilter()}>{
-          this.props.visibilityFilter === VisibilityFilters.SHOW_UNANSWERED
-            ? ("Show answered")
-            : ("Show unanswered")
-        }</Button>
+      <ButtonGroup>
+        <Button color="primary" onClick={() => this.toggleVisibilityFilter(VisibilityFilters.SHOW_UNANSWERED)} active={visibilityFilter === VisibilityFilters.SHOW_UNANSWERED}>Show unanswered</Button>
+        <Button color="primary" onClick={() => this.toggleVisibilityFilter(VisibilityFilters.SHOW_ANSWERED)} active={visibilityFilter === VisibilityFilters.SHOW_ANSWERED}>Show answered</Button>
+      </ButtonGroup>
       <ListGroup>
         {this.props.questionIds && (this.props.questionIds.map((questionId) => <ListGroupItem key={questionId}><QuestionListItem question_id={questionId}/></ListGroupItem>))}
       </ListGroup>

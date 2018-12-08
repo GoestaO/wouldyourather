@@ -13,10 +13,10 @@ export function toggleVisibility(filter) {
   let newFilter = '';
   switch (filter) {
     case VisibilityFilters.SHOW_ANSWERED:
-      newFilter = VisibilityFilters.SHOW_UNANSWERED
+      newFilter = VisibilityFilters.SHOW_ANSWERED
       break;
     case VisibilityFilters.SHOW_UNANSWERED:
-      newFilter = VisibilityFilters.SHOW_ANSWERED
+      newFilter = VisibilityFilters.SHOW_UNANSWERED
       break;
     default:
       newFilter = VisibilityFilters.SHOW_UNANSWERED

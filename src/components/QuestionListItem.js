@@ -17,7 +17,7 @@ class QuestionListItem extends React.Component {
         <CardTitle>Would You Rather...</CardTitle>
         <CardText>{question.optionOne.text}...</CardText>
       </CardBody>
-      <Link role="button" className="card-link" to={`/questions/${question_id}`}>View Poll</Link>
+      <Link role="button" className="card-link" to={`/questions/${question_id}`}>View it</Link>
     </Card>);
   }
 }

@@ -12,7 +12,7 @@ import {createNewQuestionAsync} from '../actions/questions';
 import {Redirect} from 'react-router-dom';
 
 
-class NewPoll extends Component {
+class NewQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,7 +50,7 @@ class NewPoll extends Component {
     }
     return (<Col sm="6 offset-md-3">
       <Form className="form " onSubmit={(e) => this.handleSubmit(e)}>
-        <h2>Create New Poll</h2>
+        <h2>Create New Question</h2>
         <FormGroup>
           <Label>Would You Rather</Label>
         </FormGroup>
@@ -71,4 +71,4 @@ const mapStateToProps = ({authedUser}) => {
   return {authedUser: authedUser};
 }
 
-export default connect(mapStateToProps)(NewPoll)
+export default connect(mapStateToProps)(NewQuestion)
