@@ -49,6 +49,8 @@ class Question extends React.Component {
     } = this.props;
     const {redirectToStatistics} = this.state;
 
+    const questionAlreadyAnswered = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser);
+
     if (redirectToStatistics === true) {
       return (<Redirect to={`/statistics/${question_id}`}/>)
     }
@@ -92,7 +94,7 @@ class Question extends React.Component {
               </Label>
             </Col>
           </Row>
-          <Button color="primary" type="submit" disabled={visibilityFilter === "SHOW_ANSWERED" || this.state.answer === ''}>Submit</Button>
+          <Button color="primary" type="submit" disabled={visibilityFilter === "SHOW_ANSWERED" || this.state.answer === '' || questionAlreadyAnswered === true}>Submit</Button>
         </Form>
       </div>)
       : null);
