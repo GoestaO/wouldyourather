@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {Nav, Navbar, NavItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
+import UserInfo from './UserInfo';
 
 
-class Navigation extends Component {
-  render() {
+const Navigation = () => {
     return (<div>
       <Navbar color="light" expand="md">
         <Link to="/">Dashboard</Link>
@@ -20,8 +20,7 @@ class Navigation extends Component {
         </Nav>
         <Nav className="ml-auto">
           <NavItem className="mr-5">
-            {this.props.authedUserDetails &&(<img src={this.props.authedUserDetails.avatarURL} alt="avatar of the user" className="avatar-nav"/>)}
-            {this.props.authedUserDetails &&(this.props.authedUserDetails.name)}
+            <UserInfo/>
           </NavItem>
           <NavItem>
             <LogoutButton />
@@ -29,13 +28,6 @@ class Navigation extends Component {
         </Nav>
       </Navbar>
     </div>)
-  }
 }
 
-const mapStateToProps = ({authedUser, users}) => {
-  return {
-    authedUserDetails: users[authedUser],
-  }
-}
-
-export default connect(mapStateToProps)(Navigation);
+export default Navigation;
