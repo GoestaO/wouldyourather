@@ -14,7 +14,7 @@ import NewQuestion from './NewQuestion'
 import Leaderboard from './Leaderboard';
 import NoMatch from './NoMatch';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     this
       .props
