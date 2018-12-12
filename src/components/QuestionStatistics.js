@@ -77,8 +77,7 @@ function mapStateToProps({
   questions,
   authedUser,
   users
-}, props) {
-  const {question_id} = props.match.params;
+}, {question_id}) {
   const question = questions[question_id];
   const voteAuthedUser = users[authedUser].answers[question_id];
   const votesOptionOne = question

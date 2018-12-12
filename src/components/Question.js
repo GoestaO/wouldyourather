@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {answerQuestionAsync} from '../actions/questions';
 import {Redirect, withRouter} from 'react-router-dom';
+import QuestionStatistics from './QuestionStatistics';
 import {
   Button,
   Input,
@@ -48,14 +49,16 @@ class Question extends React.Component {
       visibilityFilter
     } = this.props;
     const {redirectToStatistics} = this.state;
-
-    const questionAlreadyAnswered = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser);
-
-    if (redirectToStatistics === true) {
-      return (<Redirect to={`/statistics/${question_id}`}/>)
-    }
     if (question === undefined) {
       return <Redirect to="/page-not-found"/>
+    }
+
+    const questionAlreadyAnswered = question
+      ? (question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
+      : false;
+
+    if (redirectToStatistics === true) {
+      return (<QuestionStatistics question_id={question_id}/>)
     }
 
     return (
